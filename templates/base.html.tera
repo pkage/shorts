@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>shorts</title>
+
+        <link rel="stylesheet" type="text/css" href="static/index.css"/>
+        <link rel="icon" href="static/favicon.png"/>
+    </head>
+    <body>
+
+        {% block main %}{% endblock %}
+        
+    </body>
+</html>
+

@@ -1,0 +1,21 @@
+[package]
+name = "shorts"
+version = "0.1.0"
+authors = ["Patrick Kage <patrick@ka.ge>"]
+edition = "2018"
+description = "Link shortener for ka.ge/x"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rocket = "0.4.5"
+rusqlite = "0.23.1"
+bcrypt = "0.8.2"
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
+
+[dependencies.rocket_contrib]
+version = "0.4.5"
+default-features = false
+features = ["serve", "tera_templates"]

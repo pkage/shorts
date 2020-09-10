@@ -1,0 +1,155 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: #444;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    main {
+        margin-left:  15vw;
+        margin-right: 15vw;
+    }
+
+    .flash {
+        padding-left:  15vw;
+        padding-right: 15vw;
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /*margin: 30px 0 10px 0;*/
+}
+
+form > input {
+    margin-bottom: 5px;
+    outline: 0;
+    border: 0px;
+    border-bottom: 1px solid #666;
+}
+
+form > button {
+    align-self: flex-end;
+}
+
+table {
+    width: 100%;
+}
+
+table th {
+    text-align: left;
+}
+
+.hits {
+    position: relative;
+}
+
+.hits__text {
+    position: relative;
+    z-index: 1;
+}
+
+.hits__bg {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    /*background-color: #C2E1FF;*/
+    background-color: #D6EBFF;
+    z-index: 0;
+}
+
+.jumbotron {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.jumbotron__img {
+    height: 100px;
+    width: auto;
+    margin: 2em 2em 2em 1em;
+}
+
+.login__row {
+    display: flex;
+    flex-direction: row;
+}
+
+.login__row > form {
+    margin-left: 1em;
+}
+
+.login {
+    margin-top: 1em;
+}
+
+.login > summary {
+    cursor: pointer;
+    outline: 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.login__logout {
+    width: 8em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flash {
+    background-color: #F0C808;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    animation: flash__exit 3s cubic-bezier(0,0,0.3,1) 5s;
+    animation-fill-mode: forwards;
+
+    pointer-events: none;
+}
+
+@keyframes flash__exit {
+    0% {
+        color: #444;
+    }   
+
+    20% {
+        color: transparent;
+        height: calc(1rem + 3px);
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    100% {
+        color: transparent;
+        height: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+}
+
+a.deletelink {
+    text-decoration: none;
+    color: rgba(64,64,64,0.4);
+    position: relative;
+    z-index: 1;
+
+}
+a.deletelink:hover {
+    color: #DD1C1A;
+}

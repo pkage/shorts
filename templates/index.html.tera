@@ -1,0 +1,103 @@
+{% extends "base" %}
+
+
+{% block main %}
+
+{% if flash_msg %}
+    <div class="flash">{{ flash_msg }}</div>
+{% endif %}
+
+<main>
+    {# <p> flash: {{ flash_msg }} </p> #}
+
+{% block header %}
+<header class="jumbotron">
+    <img class="jumbotron__img" src="/static/favicon.png" alt="shorts logo">
+    <h1> shorts </h1>
+</header>
+{% endblock %}
+    
+
+    <table>
+        <thead>
+            <tr>
+                <th>short</th>
+                <th>url</th>
+                <th>hits</th>
+                {% if user %}
+                <th></th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for link in all %}
+                <tr class="hits">
+                    <td>
+                        <span class="hits__text">{{ link.short }}</span>
+                        <span class="hits__bg" style="width: {{ (link.hit_count / total_hits) * 100 }}%;"></span>
+                    </td>
+                    <td>
+                        <span class="hits__text">{{ link.original }}</span>
+                    </td>
+                    <td>
+                        <span class="hits__text">{{ link.hit_count }}</span>
+                    </td>
+                    {% if user %}
+                    <td>
+                        <a href="/delete/{{ link.short }}" class="deletelink">&times;</a>
+                    </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <details class="login">
+        {% if user %}
+        <summary>Logged in as {{ user.email }}</summary>
+
+        <div class="login__row">
+            <form action="/submit" method="POST">
+                <p> New submission </p>
+
+                <input type="text" name="short" placeholder="short" autocomplete="off"/>
+                <input type="text" name="url" placeholder="url" autocomplete="off"/>
+
+                <button type="submit">submit</button>
+            </form>
+
+            <div class="login__logout">
+                <a href="/account/logout">Log out</a>
+            </div>
+        </div>
+        {% else %}
+        <summary>Log in</summary>
+
+        <div class="login__row">
+            <form action="/account/create" method="POST">
+                <p>Register</p>
+                <input type="email" name="email" placeholder="email" autocomplete="off"/>
+                <input type="password" name="password" placeholder="password"/>
+                <input type="text" name="invite" placeholder="invite" autocomplete="off"/>
+
+                <button type="submit">submit</button>
+            </form>
+
+            <form action="/account/login" method="POST">
+                <p>Log in</p>
+                <input type="email" name="email" placeholder="email" autocomplete="off"/>
+                <input type="password" name="password" placeholder="password"/>
+
+                <button type="submit">submit</button>
+            </form>
+        </div>
+
+        {% endif %}
+
+    </details>
+
+
+</main>
+
+{% endblock %}
+
